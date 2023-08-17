@@ -34,7 +34,7 @@ function NavBar({ children }) {
   return (
     <>
       <div className="min-h-full">
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-[#b2e269]">
           {({ open }) => (
             <>
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -44,7 +44,7 @@ function NavBar({ children }) {
                       <Link to="/">
                         <img
                           className="h-8 w-8"
-                          src={require('./basket.png')}
+                          src={require('./shop.png')}
                           alt="Your Company"
                         />
                       </Link>
@@ -59,7 +59,7 @@ function NavBar({ children }) {
                               className={classNames(
                                 item.current
                                   ? 'bg-gray-900 text-white'
-                                  : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                  : 'text-black hover:bg-[#65961d] hover:text-white',
                                 'rounded-md px-3 py-2 text-sm font-medium'
                               )}
                               aria-current={item.current ? 'page' : undefined}
@@ -98,7 +98,7 @@ function NavBar({ children }) {
                             <span className="sr-only">Open user menu</span>
                             <img
                               className="h-8 w-8 rounded-full"
-                              src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png?w=740&t=st=1690116325~exp=1690116925~hmac=4929eac90da713679198259b0a797fc19c6bc1f4ed80428f889d74d4a4ca9b4a"
+                              src={require('./user.png')}
                               alt=""
                             />
                           </Menu.Button>
@@ -164,7 +164,7 @@ function NavBar({ children }) {
                       className={classNames(
                         item.current
                           ? 'bg-gray-900 text-white'
-                          : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          : 'text-black hover:bg-[#65961d] hover:text-white',
                         'block rounded-md px-3 py-2 text-base font-medium'
                       )}
                       aria-current={item.current ? 'page' : undefined}
@@ -180,7 +180,7 @@ function NavBar({ children }) {
                     <div className="flex-shrink-0">
                       <img
                         className="h-10 w-10 rounded-full"
-                        src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png?w=740&t=st=1690116325~exp=1690116925~hmac=4929eac90da713679198259b0a797fc19c6bc1f4ed80428f889d74d4a4ca9b4a"
+                        src={require('./user.png')}
                         alt=""
                       />
                     </div>
@@ -217,7 +217,7 @@ function NavBar({ children }) {
                         key={item.name}
                         as="a"
                         href={item.link}
-                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                        className="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-[#65961d] hover:text-white"
                       >
                         {item.name}
                       </Disclosure.Button>

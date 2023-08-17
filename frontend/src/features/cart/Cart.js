@@ -116,7 +116,7 @@ export default function Cart() {
                               setOpenModal(item.id);
                             }}
                             type="button"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                            className="font-medium text-green-600 hover:text-green-500"
                           >
                             Remove
                           </button>
@@ -144,7 +144,7 @@ export default function Cart() {
             <div className="mt-6">
               <Link
                 to="/checkout"
-                className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                className="flex items-center justify-center rounded-md border border-transparent bg-green-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-green-700"
               >
                 Checkout
               </Link>
@@ -155,7 +155,7 @@ export default function Cart() {
                 <Link to="/">
                   <button
                     type="button"
-                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                    className="font-medium text-green-600 hover:text-green-500"
                   >
                     Continue Shopping
                     <span aria-hidden="true"> &rarr;</span>

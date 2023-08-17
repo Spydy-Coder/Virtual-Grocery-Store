@@ -354,7 +354,7 @@ function MobileFilter({
                                   onChange={(e) =>
                                     handleFilter(e, section, option)
                                   }
-                                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                  className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500"
                                 />
                                 <label
                                   htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
@@ -377,11 +377,11 @@ function MobileFilter({
           value={pincode}
           placeholder="Enter your pincode"
           onChange={handlePincodeChange}
-          className="ml-4 h-8 px-2 border rounded focus:ring-indigo-500 focus:border-indigo-500"
+          className="ml-4 h-8 px-2 border rounded focus:ring-green-500 focus:border-green-500"
         />
         <button
           onClick={handlePincodeFilter}
-          className="ml-4 h-8 px-4 py-1 text-sm bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+          className="ml-4 h-8 px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700 focus:ring focus:ring-green-500 focus:ring-opacity-50"
         >
           Apply
         </button>
@@ -437,7 +437,7 @@ function DesktopFilter({
                         type="checkbox"
                         defaultChecked={option.checked}
                         onChange={(e) => handleFilter(e, section, option)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500"
                       />
                       <label
                         htmlFor={`filter-${section.id}-${optionIdx}`}
@@ -460,11 +460,11 @@ function DesktopFilter({
           value={pincode}
           placeholder="Enter your pincode"
           onChange={handlePincodeChange}
-          className="h-8 px-2 border rounded focus:ring-indigo-500 focus:border-indigo-500"
+          className="h-8 px-2 border rounded focus:ring-green-500 focus:border-green-500"
         />
         <button
           onClick={handlePincodeFilter}
-          className=" h-8 xl:ml-2 mt-2 xl:mt-0 px-4 py-1 text-sm bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+          className=" h-8 xl:ml-2 mt-2 xl:mt-0 px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700 focus:ring focus:ring-green-500 focus:ring-opacity-50"
         >
           Apply
         </button>
@@ -502,7 +502,7 @@ function ProductGrid({ products, status }) {
                 </div>
                 <div className="mt-4 flex justify-between">
                   <div>
-                    <h3 className="text-sm text-gray-700">
+                    <h3 className="text-sm text-gray-700 h-16">
                       <div href={product.thumbnail}>
                         <span aria-hidden="true" className="absolute inset-0" />
                         {product.title}

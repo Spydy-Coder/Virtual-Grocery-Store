@@ -1,42 +1,46 @@
-import { useState, useEffect } from 'react';
-import { StarIcon } from '@heroicons/react/20/solid';
-import { RadioGroup } from '@headlessui/react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductByIdAsync, selectProductById, selectProductListStatus } from '../productSlice';
-import { useParams } from 'react-router-dom';
-import { addToCartAsync, selectItems } from '../../cart/cartItemSlice';
-import { selectLoggedInUser } from '../../auth/authSlice';
-import { discountedPrice } from '../../../app/constants';
-import { useAlert } from 'react-alert';
-import { Grid } from 'react-loader-spinner';
+import { useState, useEffect } from "react";
+import { StarIcon } from "@heroicons/react/20/solid";
+import { RadioGroup } from "@headlessui/react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchProductByIdAsync,
+  selectProductById,
+  selectProductListStatus,
+} from "../productSlice";
+import { useParams } from "react-router-dom";
+import { addToCartAsync, selectItems } from "../../cart/cartItemSlice";
+import { selectLoggedInUser } from "../../auth/authSlice";
+import { discountedPrice } from "../../../app/constants";
+import { useAlert } from "react-alert";
+import { Grid } from "react-loader-spinner";
 
 // TODO: In server data we will add colors, sizes , highlights. to each product
 
 const colors = [
-  { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
-  { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
-  { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
+  { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
+  { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
+  { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
 ];
 const sizes = [
-  { name: 'XXS', inStock: false },
-  { name: 'XS', inStock: true },
-  { name: 'S', inStock: true },
-  { name: 'M', inStock: true },
-  { name: 'L', inStock: true },
-  { name: 'XL', inStock: true },
-  { name: '2XL', inStock: true },
-  { name: '3XL', inStock: true },
+  { name: "XXS", inStock: false },
+  { name: "XS", inStock: true },
+  { name: "S", inStock: true },
+  { name: "M", inStock: true },
+  { name: "L", inStock: true },
+  { name: "XL", inStock: true },
+  { name: "2XL", inStock: true },
+  { name: "3XL", inStock: true },
 ];
 
 const highlights = [
-  'Hand cut and sewn locally',
-  'Dyed with our proprietary colors',
-  'Pre-washed & pre-shrunk',
-  'Ultra-soft 100% cotton',
+  "Hand cut and sewn locally",
+  "Dyed with our proprietary colors",
+  "Pre-washed & pre-shrunk",
+  "Ultra-soft 100% cotton",
 ];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
+  return classes.filter(Boolean).join(" ");
 }
 
 // TODO : Loading UI
@@ -54,7 +58,7 @@ export default function ProductDetail() {
 
   const handleCart = (e) => {
     e.preventDefault();
-    
+
     if (items.findIndex((item) => item.product.id === product.id) < 0) {
       console.log({ items, product });
       const newItem = {
@@ -65,11 +69,10 @@ export default function ProductDetail() {
       };
       dispatch(addToCartAsync(newItem));
       // TODO: it will be based on server response of backend
-      alert.success('Item added to Cart');
+      alert.success("Item added to Cart");
     } else {
-      alert.error('Item Already added');
+      alert.error("Item Already added");
     }
-    
   };
 
   useEffect(() => {
@@ -78,7 +81,7 @@ export default function ProductDetail() {
 
   return (
     <div className="bg-white">
-      {status === 'loading' ? (
+      {status === "loading" ? (
         <Grid
           height="80"
           width="80"
@@ -191,9 +194,9 @@ export default function ProductDetail() {
                         key={rating}
                         className={classNames(
                           product.rating > rating
-                            ? 'text-gray-900'
-                            : 'text-gray-200',
-                          'h-5 w-5 flex-shrink-0'
+                            ? "text-gray-900"
+                            : "text-gray-200",
+                          "h-5 w-5 flex-shrink-0"
                         )}
                         aria-hidden="true"
                       />
@@ -205,7 +208,7 @@ export default function ProductDetail() {
 
               <form className="mt-10">
                 {/* Colors */}
-                <div>
+                {/* <div>
                   <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
                   <RadioGroup
@@ -244,10 +247,10 @@ export default function ProductDetail() {
                       ))}
                     </div>
                   </RadioGroup>
-                </div>
+                </div> */}
 
                 {/* Sizes */}
-                <div className="mt-10">
+                {/* <div className="mt-10">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-medium text-gray-900">Size</h3>
                     <a
@@ -325,7 +328,7 @@ export default function ProductDetail() {
                       ))}
                     </div>
                   </RadioGroup>
-                </div>
+                </div> */}
 
                 <button
                   onClick={handleCart}
@@ -349,7 +352,7 @@ export default function ProductDetail() {
                 </div>
               </div>
 
-              <div className="mt-10">
+              {/* <div className="mt-10">
                 <h3 className="text-sm font-medium text-gray-900">
                   Highlights
                 </h3>
@@ -363,7 +366,7 @@ export default function ProductDetail() {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </div> */}
 
               <div className="mt-10">
                 <h2 className="text-sm font-medium text-gray-900">Details</h2>

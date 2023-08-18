@@ -38,9 +38,9 @@ export default function Cart() {
       {!items.length && <Navigate to="/" replace={true}></Navigate>}
 
       <div>
-        <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto  bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-            <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
+            <h1 className="text-4xl mt-3 mb-5 font-bold tracking-tight text-green-500">
               Cart
             </h1>
             <div className="flow-root">
@@ -152,7 +152,7 @@ export default function Cart() {
             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
               <p>
                 or
-                <Link to="/">
+                <Link to="/" className="ml-2">
                   <button
                     type="button"
                     className="font-medium text-green-600 hover:text-green-500"

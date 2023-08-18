@@ -3,9 +3,8 @@ import UserProfile from '../features/user/components/UserProfile';
 
 function UserProfilePage() {
   return (
-    <div>
+    <div className='bg-white'>
       <NavBar>
-        <h1 className='mx-auto text-2xl'>My Profile</h1>
         <UserProfile></UserProfile>
       </NavBar>
     </div>

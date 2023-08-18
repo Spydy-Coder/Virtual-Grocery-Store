@@ -50,30 +50,31 @@ export default function UserProfile() {
   };
 
   return (
-    <div>
+    <div className=''>
       <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h1 className='px-4 mb-3 sm:px-6 font-bold text-2xl'>My Profile</h1>
         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-          <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
+          <h1 className="text-4xl my-3 font-bold tracking-tight text-green-500">
             Name: {userInfo.name ? userInfo.name : 'New User'}
           </h1>
-          <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
+          <h3 className="text-xl my-3 font-bold tracking-tight text-red-900">
             email address : {userInfo.email}
           </h3>
           {userInfo.role === 'admin' && (
-            <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
+            <h3 className="text-xl my-3 font-bold tracking-tight text-red-900">
               role : {userInfo.role}
             </h3>
           )}
         </div>
 
-        <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+        <div className="border-t border-gray-200 px-4 py-0.5 sm:px-6 ">
           <button
             onClick={(e) => {
               setShowAddAddressForm(true);
               setSelectedEditIndex(-1);
             }}
             type="submit"
-            className="rounded-md my-5 bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+            className="rounded-md my-3 bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
           >
             Add New Address
           </button>
@@ -166,7 +167,7 @@ export default function UserProfile() {
                     <div className="col-span-full">
                       <label
                         htmlFor="street-address"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="block text-lg ml-2 font-medium leading-6 text-gray-900"
                       >
                         Street address
                       </label>
@@ -270,7 +271,7 @@ export default function UserProfile() {
             </form>
           ) : null}
 
-          <p className="mt-0.5 text-sm text-gray-500">Your Addresses :</p>
+          <p className="mt-0.5 text-sm text-gray-500 mb-3">Your Addresses :</p>
           {userInfo.addresses.map((address, index) => (
             <div key={index}>
               {selectedEditIndex === index ? (

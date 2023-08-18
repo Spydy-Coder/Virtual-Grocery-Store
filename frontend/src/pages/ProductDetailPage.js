@@ -13,7 +13,7 @@ function ProductDetailPage() {
       },[])
     return ( 
         
-        <div>
+        <div className="bg-white">
             <NavBar>
                 <ProductDetail></ProductDetail>
             </NavBar>

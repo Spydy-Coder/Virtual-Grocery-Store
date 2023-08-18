@@ -3,7 +3,7 @@ import NavBar from "../features/navbar/Navbar";
 
 function AdminHome() {
     return ( 
-        <div>
+        <div className="bg-white">
             <NavBar>
                 <AdminProductList></AdminProductList>
             </NavBar>

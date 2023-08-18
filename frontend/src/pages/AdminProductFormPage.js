@@ -2,7 +2,7 @@ import ProductForm from "../features/admin/components/ProductForm";
 import NavBar from "../features/navbar/Navbar";
 function AdminProductFormPage() {
     return ( 
-        <div>
+        <div className="bg-white">
             <NavBar>
                 <ProductForm></ProductForm>
             </NavBar>

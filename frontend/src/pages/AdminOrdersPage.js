@@ -3,7 +3,7 @@ import NavBar from "../features/navbar/Navbar";
 
 function AdminOrdersPage() {
     return ( 
-        <div>
+        <div className="bg-white">
             <NavBar>
                 <AdminOrders></AdminOrders>
             </NavBar>

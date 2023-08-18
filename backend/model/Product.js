@@ -17,6 +17,8 @@ const productSchema = new Schema({
     store_name:{type:String},
     store_id:{type:String},
     pincodes:{type:[Schema.Types.Mixed]},
+    usersRating:{type:Number,default:0},
+    totalUsers:{type:Number,default:0},
     
 })
 

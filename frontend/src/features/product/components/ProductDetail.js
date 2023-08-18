@@ -6,6 +6,7 @@ import {
   fetchProductByIdAsync,
   selectProductById,
   selectProductListStatus,
+  updateRatingAsync,
 } from "../productSlice";
 import { useParams } from "react-router-dom";
 import { addToCartAsync, selectItems } from "../../cart/cartItemSlice";
@@ -85,15 +86,18 @@ export default function ProductDetail() {
 
   const handleRatingChange = (newRating) => {
     // Update the rating in your database or state
+    console.log("first");
     setRating(newRating);
-    console.log(newRating);
   };
 
-  useEffect(()=>{
-    
-
-  },[rating])
-
+  useEffect(() => {
+    if (rating) {
+      console.log(rating);
+      let product1 = { id: params.id, rating: rating };
+      console.log(product1);
+      dispatch(updateRatingAsync(product1));
+    }
+  }, [rating]);
 
   return (
     <div className="bg-white">
@@ -140,7 +144,7 @@ export default function ProductDetail() {
                 <a
                   href={product.href}
                   aria-current="page"
-                  className="font-medium text-gray-500 hover:text-gray-600"
+                  className="font-medium text-lg text-gray-500 hover:text-gray-600"
                 >
                   {product.title}
                 </a>
@@ -205,7 +209,7 @@ export default function ProductDetail() {
                 <h3 className="sr-only">Reviews</h3>
                 <div className="flex items-center">
                   <div className="flex items-center">
-                  <Rating value={rating} onChange={handleRatingChange} />
+                    <Rating value={rating} onChange={handleRatingChange} />
                   </div>
                   <p className="sr-only">{product.rating} out of 5 stars</p>
                 </div>

@@ -1,10 +1,10 @@
-const { Product } = require('../model/Product');
+const { Product } = require("../model/Product");
 
 exports.createProduct = async (req, res) => {
   // this product we have to get from API body
 
   const product = new Product(req.body);
-  console.log(req.body)
+  console.log(req.body);
   try {
     const doc = await product.save();
     res.status(201).json(doc);
@@ -20,11 +20,11 @@ exports.fetchAllProducts = async (req, res) => {
   // pagination = {_page:1,_limit=10}
   // console.log(req.query)
   // TODO : we have to try with multiple category and brands after change in front-end
-  let condition = {}
-  if(!req.query.admin){
-      condition.deleted = {$ne:true}
+  let condition = {};
+  if (!req.query.admin) {
+    condition.deleted = { $ne: true };
   }
-  
+
   let query = Product.find(condition);
   let totalProductsQuery = Product.find(condition);
 
@@ -42,10 +42,10 @@ exports.fetchAllProducts = async (req, res) => {
   if (req.query.pincode) {
     // If pincode parameter is provided in the request
     const pincode = req.query.pincode;
-    query = query.find({pincodes:`${req.query.pincode}`}); // Filter products with the specified pincode
+    query = query.find({ pincodes: `${req.query.pincode}` }); // Filter products with the specified pincode
     totalProductsQuery = totalProductsQuery.find({ pincodes: pincode }); // Filter total products with the specified pincode
-  console.log(query)
-  console.log(totalProductsQuery)
+    console.log(query);
+    console.log(totalProductsQuery);
   }
   //TODO : How to get sort on discounted Price not on Actual price
   if (req.query._sort && req.query._order) {
@@ -61,11 +61,9 @@ exports.fetchAllProducts = async (req, res) => {
     query = query.skip(pageSize * (page - 1)).limit(pageSize);
   }
 
-
-
   try {
     const docs = await query.exec();
-    res.set('X-Total-Count', totalDocs);
+    res.set("X-Total-Count", totalDocs);
     res.status(200).json(docs);
   } catch (err) {
     res.status(400).json(err);
@@ -86,8 +84,36 @@ exports.fetchProductById = async (req, res) => {
 exports.updateProduct = async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await Product.findByIdAndUpdate(id, req.body, {new:true});
+    const product = await Product.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     res.status(200).json(product);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};
+
+exports.updateRating = async (req, res) => {
+  const { id } = req.params;
+  const intialRating = req.body.rating;
+
+  try {
+    const update3 = {
+      $inc: { usersRating: intialRating, totalUsers: 1 },
+    };
+
+    const updatedProduct = await Product.findByIdAndUpdate(id, update3, {
+      new: true,
+    });
+    const finalRating = updatedProduct.usersRating / updatedProduct.totalUsers;
+
+    const newRating = Math.floor(finalRating);
+    const update = { $set: { rating: newRating } };
+    const updatedProduct2 = await Product.findByIdAndUpdate(id, update, {
+      new: true,
+    });
+
+    res.status(200).json(updatedProduct2);
   } catch (err) {
     res.status(400).json(err);
   }

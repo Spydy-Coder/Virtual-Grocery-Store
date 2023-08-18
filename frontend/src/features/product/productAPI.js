@@ -37,6 +37,30 @@ export function updateProduct(update) {
   });
 }
 
+export async function updateRating(update) {
+  try {
+    const response = await fetch(
+      `http://localhost:8080/products/rating/${update.id}`,
+      {
+        method: 'PATCH',
+        body: JSON.stringify({ rating: update.rating }), // Send the updated rating
+        headers: { 'content-type': 'application/json' },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to update rating');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error updating rating:', error);
+    throw error;
+  }
+}
+
+
 export function fetchProductsByFilters(filter, sort, pagination, admin) {
   // filter = {"category":["smartphone","laptops"]}
   // sort = {_sort:"price",_order="desc"}

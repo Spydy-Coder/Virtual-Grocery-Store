@@ -7,6 +7,7 @@ import {
   fetchProductById,
   createProduct,
   updateProduct,
+  updateRating,
 } from './productAPI';
 
 const initialState = {
@@ -70,6 +71,15 @@ export const updateProductAsync = createAsyncThunk(
   }
 );
 
+export const updateRatingAsync = createAsyncThunk(
+  'product/updateRating',
+  async (update) => {
+    const response = await updateRating(update);
+    console.log("bikashc handra dalai",response.data)
+    return response.data;
+  }
+);
+
 export const productSlice = createSlice({
   name: 'product',
   initialState,
@@ -126,6 +136,18 @@ export const productSlice = createSlice({
         );
         state.products[index] = action.payload;
         state.selectedProduct = action.payload;
+
+      })
+      .addCase(updateRatingAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(updateRatingAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        // const index = state.products.findIndex(
+        //   (product) => product.id === action.payload.id
+        // );
+        // state.products[index] = action.payload;
+        // state.selectedProduct = action.payload;
 
       });
   },

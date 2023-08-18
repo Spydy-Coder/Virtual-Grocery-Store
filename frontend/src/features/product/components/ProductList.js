@@ -57,7 +57,7 @@ export default function ProductList() {
       name: "Brands",
       options: brands,
     },
-    ];
+  ];
 
   const [filter, setFilter] = useState({});
   const [sort, setSort] = useState({});
@@ -162,10 +162,10 @@ export default function ProductList() {
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
                 <div>
-                  <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+                  <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900 ">
                     Sort
                     <ChevronDownIcon
-                      className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500 "
                       aria-hidden="true"
                     />
                   </Menu.Button>
@@ -180,7 +180,7 @@ export default function ProductList() {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none hover:cursor-pointer">
                     <div className="py-1">
                       {sortOptions.map((option) => (
                         <Menu.Item key={option.name}>
@@ -371,21 +371,21 @@ function MobileFilter({
                   </Disclosure>
                 ))}
                 <div className="flex flex-row items-center mt-4">
-        <input
-          type="text"
-          id="pincodeInput"
-          value={pincode}
-          placeholder="Enter your pincode"
-          onChange={handlePincodeChange}
-          className="ml-4 h-8 px-2 border rounded focus:ring-green-500 focus:border-green-500"
-        />
-        <button
-          onClick={handlePincodeFilter}
-          className="ml-4 h-8 px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700 focus:ring focus:ring-green-500 focus:ring-opacity-50"
-        >
-          Apply
-        </button>
-      </div>
+                  <input
+                    type="text"
+                    id="pincodeInput"
+                    value={pincode}
+                    placeholder="Enter your pincode"
+                    onChange={handlePincodeChange}
+                    className="ml-4 h-8 px-2 border rounded focus:ring-green-500 focus:border-green-500"
+                  />
+                  <button
+                    onClick={handlePincodeFilter}
+                    className="ml-4 h-8 px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700 focus:ring focus:ring-green-500 focus:ring-opacity-50"
+                  >
+                    Apply
+                  </button>
+                </div>
               </form>
             </Dialog.Panel>
           </Transition.Child>
@@ -464,7 +464,7 @@ function DesktopFilter({
         />
         <button
           onClick={handlePincodeFilter}
-          className=" h-8 xl:ml-2 mt-2 xl:mt-0 px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700 focus:ring focus:ring-green-500 focus:ring-opacity-50"
+          className=" h-8 xl:ml-2  xl:mt-0 px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700 focus:ring focus:ring-green-500 focus:ring-opacity-50"
         >
           Apply
         </button>
@@ -509,7 +509,9 @@ function ProductGrid({ products, status }) {
                       </div>
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">
-                      <StarIcon className="w-6 h-6 inline" />
+                      <span className="text-orange-500">
+                        <StarIcon className="w-6 h-6 inline" />
+                      </span>
                       <span className="align-bottom">{product.rating}</span>
                     </p>
                     {/* Displaying the store_name */}

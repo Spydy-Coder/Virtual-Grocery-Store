@@ -126,7 +126,9 @@ function AdminOrders() {
                     <td className="py-3 px-2 text-left whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="mr-2"></div>
-                        <span className="font-medium">{".."+order.id.toString().slice(-7)}</span>
+                        <span className="font-medium">
+                          {".." + order.id.toString().slice(-7)}
+                        </span>
                       </div>
                     </td>
                     <td className="py-3 px-2 text-left">
@@ -140,9 +142,22 @@ function AdminOrders() {
                             />
                           </div>
                           <span>
-                            {item.product.title} - #{item.quantity} - ₹
+                            {item.product.title.length > 75 ? (
+                              <>
+                                <div className="break-words">
+                                  {item.product.title.slice(0, 75)}
+                                </div>
+                                <div className="break-words">
+                                  {item.product.title.slice(75)}
+                                </div>
+                              </>
+                            ) : (
+                              <div>{item.product.title}</div>
+                            )}
+                            - #{item.quantity} - ₹
                             {discountedPrice(item.product)}
                           </span>
+                          
                         </div>
                       ))}
                     </td>

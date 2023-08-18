@@ -1,5 +1,5 @@
 const { Order } = require("../model/Order");
-
+const { Product } = require("../model/Product");
 exports.fetchOrdersByUser = async (req, res) => {
   const { userId } = req.params;
   try {
@@ -13,13 +13,25 @@ exports.fetchOrdersByUser = async (req, res) => {
 
 exports.createOrder = async (req, res) => {
   const order = new Order(req.body);
+
   try {
+    // Decrease the stock of each product in the order
+    for (const item of order.items) {
+      const productId = item.product.id;
+      const quantity = item.quantity;
+
+      // Find the product by its ID and update the stock
+      await Product.findByIdAndUpdate(productId, { $inc: { stock: -quantity } });
+    }
+
+    // Save the order
     const doc = await order.save();
     res.status(201).json(doc);
   } catch (err) {
     res.status(400).json(err);
   }
 };
+
 
 exports.deleteOrder = async (req, res) => {
   const { id } = req.params;

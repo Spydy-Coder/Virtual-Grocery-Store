@@ -14,6 +14,8 @@ import { discountedPrice } from "../../../app/constants";
 import { useAlert } from "react-alert";
 import { Grid } from "react-loader-spinner";
 
+import Rating from "./Rating";
+
 // TODO: In server data we will add colors, sizes , highlights. to each product
 
 const colors = [
@@ -78,6 +80,20 @@ export default function ProductDetail() {
   useEffect(() => {
     dispatch(fetchProductByIdAsync(params.id));
   }, [dispatch, params.id]);
+
+  const [rating, setRating] = useState(0); // State to manage the rating
+
+  const handleRatingChange = (newRating) => {
+    // Update the rating in your database or state
+    setRating(newRating);
+    console.log(newRating);
+  };
+
+  useEffect(()=>{
+    
+
+  },[rating])
+
 
   return (
     <div className="bg-white">
@@ -189,18 +205,7 @@ export default function ProductDetail() {
                 <h3 className="sr-only">Reviews</h3>
                 <div className="flex items-center">
                   <div className="flex items-center">
-                    {[0, 1, 2, 3, 4].map((rating) => (
-                      <StarIcon
-                        key={rating}
-                        className={classNames(
-                          product.rating > rating
-                            ? "text-gray-900"
-                            : "text-gray-200",
-                          "h-5 w-5 flex-shrink-0"
-                        )}
-                        aria-hidden="true"
-                      />
-                    ))}
+                  <Rating value={rating} onChange={handleRatingChange} />
                   </div>
                   <p className="sr-only">{product.rating} out of 5 stars</p>
                 </div>

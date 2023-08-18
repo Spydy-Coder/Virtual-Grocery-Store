@@ -508,11 +508,22 @@ function ProductGrid({ products, status }) {
                         {product.title}
                       </div>
                     </h3>
-                    <p className="mt-1 text-sm text-gray-500">
-                      <span className="text-orange-500">
-                        <StarIcon className="w-6 h-6 inline" />
+                    <p className="mt-1 text-sm text-gray-500 flex">
+                      <span className="flex items-center">
+                      {[0, 1, 2, 3, 4].map((rating) => (
+                      <StarIcon
+                        key={rating}
+                        className={classNames(
+                          product.rating > rating
+                            ? "text-orange-500"
+                            : "text-gray-200",
+                          "h-5 w-5 flex-shrink-0"
+                        )}
+                        aria-hidden="true"
+                      />
+                    ))}
                       </span>
-                      <span className="align-bottom">{product.rating}</span>
+                      <span className="align-bottom ml-3">{product.rating}</span>
                     </p>
                     {/* Displaying the store_name */}
                     <p className="mt-1 text-sm text-gray-500">

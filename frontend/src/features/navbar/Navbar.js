@@ -144,7 +144,7 @@ function NavBar({ children }) {
                         />
                       ) : (
                         <Bars3Icon
-                          className="block h-6 w-6"
+                          className="block h-6 w-6 text-white"
                           aria-hidden="true"
                         />
                       )}
@@ -176,13 +176,15 @@ function NavBar({ children }) {
               )}
             </div>
                 <div className="border-t border-gray-700 pb-3 pt-4">
-                  <div className="flex items-center px-5">
+                  <div className="flex items-center px-3">
                     <div className="flex-shrink-0">
+                    <Link to="/profile">
                       <img
-                        className="h-10 w-10 rounded-full"
+                        className="h-10 w-10 rounded-full "
                         src={require('./user.png')}
                         alt=""
                       />
+                      </Link>
                     </div>
                     <div className="ml-3">
                       <div className="text-base font-medium leading-none text-white">
@@ -231,8 +233,8 @@ function NavBar({ children }) {
         </Disclosure>
 
         <header className="bg-white shadow">
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+          <div className="mx-auto max-w-7xl px-4 py-3 sm:py-3 sm:px-6 lg:px-8">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">
               Grocery Depot
             </h1>
           </div>

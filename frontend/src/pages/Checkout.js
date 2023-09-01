@@ -15,6 +15,7 @@ import {
 } from "../features/order/orderSlice";
 import { selectUserInfo } from "../features/user/userSlice";
 import { discountedPrice } from "../app/constants";
+import NavBar from "../features/navbar/Navbar";
 
 function Checkout() {
   const dispatch = useDispatch();
@@ -102,12 +103,15 @@ function Checkout() {
           replace={true}
         ></Navigate>
       )}
-      <div className="mx-auto  bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
+
+      <NavBar>
+      <div className="bg-white">
+      <div className="mx-auto bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">
             {/* This form is for address */}
             <form
-              className="bg-white px-5 py-12 mt-12"
+              className="bg-white  py-12 "
               noValidate
               onSubmit={handleSubmit((data) => {
                 console.log(data);
@@ -122,7 +126,7 @@ function Checkout() {
             >
               <div className="space-y-12">
                 <div className="border-b border-gray-900/10 pb-12">
-                  <h2 className="text-2xl font-semibold leading-7 text-gray-900">
+                  <h2 className="text-2xl font-semibold leading-7 text-gray-900 ">
                     Personal Information
                   </h2>
                   <p className="mt-1 text-sm leading-6 text-gray-600">
@@ -144,7 +148,7 @@ function Checkout() {
                             required: "name is required",
                           })}
                           id="name"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                         />
                         {errors.name && (
                           <p className="text-red-500">{errors.name.message}</p>
@@ -166,7 +170,7 @@ function Checkout() {
                             required: "email is required",
                           })}
                           type="email"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                         />
                         {errors.email && (
                           <p className="text-red-500">{errors.email.message}</p>
@@ -188,7 +192,7 @@ function Checkout() {
                             required: "phone is required",
                           })}
                           type="tel"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                         />
                         {errors.phone && (
                           <p className="text-red-500">{errors.phone.message}</p>
@@ -210,7 +214,7 @@ function Checkout() {
                             required: "street is required",
                           })}
                           id="street"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                         />
                         {errors.street && (
                           <p className="text-red-500">
@@ -235,7 +239,7 @@ function Checkout() {
                           })}
                           id="city"
                           autoComplete="address-level2"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                         />
                         {errors.city && (
                           <p className="text-red-500">{errors.city.message}</p>
@@ -258,7 +262,7 @@ function Checkout() {
                           })}
                           id="state"
                           autoComplete="address-level1"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                         />
                         {errors.state && (
                           <p className="text-red-500">{errors.state.message}</p>
@@ -280,7 +284,7 @@ function Checkout() {
                             required: "pinCode is required",
                           })}
                           id="pinCode"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                         />
                         {errors.pinCode && (
                           <p className="text-red-500">
@@ -309,11 +313,11 @@ function Checkout() {
                 </div>
               </div>
             </form>
-            <div className="border-b border-gray-900/10 pb-12">
+            <div className="border-b border-gray-1000/10 pb-12">
               <h2 className="text-base font-semibold leading-7 text-gray-900">
                 Addresses
               </h2>
-              <p className="mt-1 text-sm leading-6 text-gray-600">
+              <p className="mt-1 mb-2 text-sm leading-6 text-gray-600">
                 Choose from Existing addresses
               </p>
               <ul>
@@ -328,7 +332,7 @@ function Checkout() {
                         name="address"
                         type="radio"
                         value={index}
-                        className="h-4 w-4 border-gray-300 text-green-600 focus:ring-green-600"
+                        className="h-4 w-4 border-gray-600 text-green-600 focus:ring-green-600"
                       />
                       <div className="min-w-0 flex-auto">
                         <p className="text-sm font-semibold leading-6 text-gray-900">
@@ -371,7 +375,7 @@ function Checkout() {
                         value="cash"
                         type="radio"
                         checked={paymentMethod === "cash"}
-                        className="h-4 w-4 border-gray-300 text-green-600 focus:ring-green-600"
+                        className="h-4 w-4 border-gray-600 text-green-600 focus:ring-green-600"
                       />
                       <label
                         htmlFor="cash"
@@ -388,7 +392,7 @@ function Checkout() {
                         checked={paymentMethod === "card"}
                         value="card"
                         type="radio"
-                        className="h-4 w-4 border-gray-300 text-green-600 focus:ring-green-600"
+                        className="h-4 w-4 border-gray-600 text-green-600 focus:ring-green-600"
                       />
                       <label
                         htmlFor="card"
@@ -403,13 +407,13 @@ function Checkout() {
             </div>
           </div>
           <div className="lg:col-span-2">
-            <div className="mx-auto mt-12 bg-white max-w-7xl px-2 sm:px-2 lg:px-4">
-              <div className="border-t border-gray-200 px-0 py-6 sm:px-0">
-                <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
+            <div className="mx-auto  bg-white max-w-7xl px-2 sm:px-2 lg:px-4">
+              <div className=" px-0  sm:px-0">
+                <h1 className="text-4xl mt-5 mb-3 font-bold tracking-tight text-green-500">
                   Cart
                 </h1>
                 <div className="flow-root">
-                  <ul role="list" className="-my-6 divide-y divide-gray-200">
+                  <ul role="list" className=" divide-y divide-gray-200">
                     {items.map((item) => (
                       <li key={item.id} className="flex py-6">
                         <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
@@ -499,7 +503,7 @@ function Checkout() {
                     <Link to="/">
                       <button
                         type="button"
-                        className="font-medium text-green-600 hover:text-green-500"
+                        className="ml-3 font-medium text-green-600 hover:text-green-500"
                       >
                         Continue Shopping
                         <span aria-hidden="true"> &rarr;</span>
@@ -512,6 +516,8 @@ function Checkout() {
           </div>
         </div>
       </div>
+      </div>
+      </NavBar>
     </>
   );
 }

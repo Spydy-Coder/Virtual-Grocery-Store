@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   fetchLoggedInUserOrderAsync,
   selectUserInfo,
   selectUserOrders,
-} from '../userSlice';
-import { discountedPrice } from '../../../app/constants';
+} from "../userSlice";
+import { discountedPrice } from "../../../app/constants";
 
 export default function UserOrders() {
   const dispatch = useDispatch();
@@ -21,9 +21,12 @@ export default function UserOrders() {
       {orders.map((order) => (
         <div key={order.id}>
           <div>
-            <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
+            <div className="mx-auto sm:mt-5 bg-white max-w-7xl px-4 sm:px-6 lg:px-8 ">
+              <h1 className="mx-auto text-4xl font-bold text-green-500 sm:px-6 mt-1">
+                My Orders
+              </h1>
+              <div className="border-t border-gray-200 px-4  py-2 sm:py-3 sm:px-8 px-6">
+                <h1 className=" text-xl sm:text-4xl my-5 font-bold tracking-tight text-gray-900">
                   Order # {order.id}
                 </h1>
                 <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
@@ -45,9 +48,13 @@ export default function UserOrders() {
                           <div>
                             <div className="flex justify-between text-base font-medium text-gray-900">
                               <h3>
-                                <a href={item.product.id}>{item.product.title}</a>
+                                <a href={item.product.id}>
+                                  {item.product.title}
+                                </a>
                               </h3>
-                              <p className="ml-4">${discountedPrice(item.product)}</p>
+                              <p className="ml-4">
+                                ${discountedPrice(item.product)}
+                              </p>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">
                               {item.product.brand}
@@ -84,21 +91,19 @@ export default function UserOrders() {
                 <p className="mt-0.5 mb-3 text-sm text-gray-500">
                   Shipping Address :
                 </p>
-                <div className="flex justify-between gap-x-6 px-5 py-5 border-solid border-2 border-gray-200">
-                  <div className="flex gap-x-3">
-                    <div className="min-w-0 flex-auto">
-                      <p className="text-lg font-semibold leading-6 text-gray-900">
-                        {order.selectedAddress.name}
-                      </p>
-                      <p className="mt-1 truncate text-sm leading-5 text-gray-500">
-                        {order.selectedAddress.street}
-                      </p>
-                      <p className="mt-1 truncate text-sm leading-5 text-gray-500">
-                        {order.selectedAddress.pinCode}
-                      </p>
-                    </div>
+                <div className="flex flex-col gap-y-3 gap-x-6 px-3 sm:px-13 py-5 border-solid border-2 border-gray-200 sm:flex-row sm:items-center">
+                  <div className="flex-auto">
+                    <p className="text-lg font-semibold leading-6 text-gray-900">
+                      {order.selectedAddress.name}
+                    </p>
+                    <p className="mt-1 truncate text-xs sm:text-sm leading-5 text-gray-500">
+                      {order.selectedAddress.street}
+                    </p>
+                    <p className="mt-1 truncate text-sm leading-5 text-gray-500">
+                      {order.selectedAddress.pinCode}
+                    </p>
                   </div>
-                  <div className="hidden sm:flex sm:flex-col sm:items-end">
+                  <div className="flex flex-col  sm:gap-x-3">
                     <p className="text-sm leading-6 text-gray-900">
                       Phone: {order.selectedAddress.phone}
                     </p>

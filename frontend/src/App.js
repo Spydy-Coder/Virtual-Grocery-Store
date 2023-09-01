@@ -69,8 +69,10 @@ const router = createBrowserRouter([
   {
     path: '/checkout',
     element: (
-      <Protected>
+      <Protected >
+      <div className='bg-white'>
         <Checkout></Checkout>
+        </div>
       </Protected>
     ),
   },
